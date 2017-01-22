@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<configuration status="DEBUG" xmlns="http://logging.apache.org/log4j/2.0/config">
+	<properties>
+		<!-- 日志输出目录 -->  
+        <property name="LOG_HOME">logs</property>
+        <!--文件日志级别 --> 
+        <property name="LOG_LEVEL_FILE">debug</property>
+        <!-- 控制台日志级别 -->
+        <property name="LOG_LEVEL_CONSOLE">debug</property>
+    </properties>
+	<!--定义所有的appender-->  
+    <appenders>  
+    	<!--输出到控制台的配置-->
+        <Console name="Console" target="SYSTEM_OUT">  
+        	<!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="${LOG_LEVEL_CONSOLE}" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--输出日志的格式-->
+            <!-- <PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} [%t:%r] %-5level %logger{36} - %msg%n" />   -->
+            <PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} [%t:%r] %-5level [%C{1.}.%M:%L] - %msg%n" />  
+        </Console>
+       <!--输出到文件,append属性决定程序启动是否自动清空log文件-->
+        <File name="ErrorLogFile" fileName="${LOG_HOME}/error.log" filePattern="${LOG_HOME}/$${date:yyyy-MM}-errlogs/%d{yyyy-MM-dd}-%i.log.gz">
+        	<ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} [%t:%r] %-5level [%C{1.}.%M:%L] - %msg%n" />
+            <SizeBasedTriggeringPolicy size="5MB"/>
+        </File>
+        <!--分段输出到文件，每次大小超过size，则这size大小的日志会自动存入按/年份-月份/年份-月份-天-序号.log.gz文件,作为存档-->
+        <RollingFile name="LogFile" fileName="${LOG_HOME}/log.log" filePattern="${LOG_HOME}/$${date:yyyy-MM-dd}-logs/%d{yyyy-MM-dd_HH}-%i.log.gz">
+            <ThresholdFilter level="${LOG_LEVEL_FILE}" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yy-MM-dd HH:mm:ss.SSS} [%t:%r] %-5level [%C{1.}.%M:%L] - %msg%n" />
+            <SizeBasedTriggeringPolicy size="5MB"/>
+            <!-- DefaultRolloverStrategy属性如不设置,则%i默认为最多同一文件夹下7个文件,超过则会覆盖,这里设置了20 -->
+            <DefaultRolloverStrategy max="1000"/>
+        </RollingFile>
+    </appenders>  
+    <loggers>
+    	<AsyncLogger name="io.netty" level="warn" additivity="false" includeLocation="true">  
+    		<appender-ref ref="Console" />
+    		<appender-ref ref="LogFile" />
+    		<appender-ref ref="ErrorLogFile" />
+    	</AsyncLogger>
+    	<AsyncLogger name="org.quartz.core" level="warn" additivity="false" includeLocation="true">  
+    		<appender-ref ref="Console" />
+    		<appender-ref ref="LogFile" />
+    		<appender-ref ref="ErrorLogFile" />
+    	</AsyncLogger>
+    	<AsyncLogger name="net.jueb.util4j" level="trace" additivity="false" includeLocation="true">  
+    		<appender-ref ref="Console" />
+    		<appender-ref ref="LogFile" />
+    		<appender-ref ref="ErrorLogFile" />
+    	</AsyncLogger>
+    	<AsyncLogger name="net.jueb.fuckGame" level="trace" additivity="false" includeLocation="true">  
+    		<appender-ref ref="Console" />
+    		<appender-ref ref="LogFile" />
+    		<appender-ref ref="ErrorLogFile" />
+    	</AsyncLogger>
+    	<!-- 所有包范围的日志都以trace级别输出控制台 -->
+   	 	<AsyncRoot level="trace" includeLocation="true">  
+            <appender-ref ref="Console" /><!--所有包的日志输出会到LogFile,除了特别声明的logger-->
+        </AsyncRoot> 
+    </loggers>  
+</configuration>

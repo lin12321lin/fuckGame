@@ -1,0 +1,454 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+<groupId>net.jueb.fuckGame</groupId>
+  <artifactId>fuckGame-root</artifactId>
+  <version>0.0.1</version>
+  <packaging>pom</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- 游戏版本 -->
+		<game.version>0.0.2-SNAPSHOT</game.version>
+		<!-- spring版本号 -->
+		<spring.version>4.2.2.RELEASE</spring.version>
+		<!-- 数据库驱动版本 -->
+		<mysqlDriver.version>5.1.39</mysqlDriver.version>
+		<!-- mybatis版本号 -->
+		<mybatis.version>3.3.0</mybatis.version>
+		<!-- log4j日志文件管理包版本 -->
+		<slf4j.version>1.7.12</slf4j.version>
+		<log4j2.version>2.3</log4j2.version>
+		<jdk.version>1.8</jdk.version>
+	</properties>
+	<modules>
+	<module>fuckGame-core</module>
+	<module>fuckGame-center</module>
+	<module>fuckGame-gate</module>
+	<module>fuckGame-game</module>
+	<module>fuckGame-scripts</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.ant</groupId>
+				<artifactId>ant</artifactId>
+				<version>1.8.2</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>3.8.1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-all</artifactId>
+				<version>4.1.6.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.9.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.10</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.4</version>
+			</dependency>
+			<dependency>
+			    <groupId>commons-fileupload</groupId>
+			    <artifactId>commons-fileupload</artifactId>
+			    <version>1.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.4</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-net</groupId>
+				<artifactId>commons-net</artifactId>
+				<version>3.3</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-pool2</artifactId>
+				<version>2.3</version>
+			</dependency>
+			<!-- 导入dbcp的jar包，用来在applicationContext.xml中配置数据库 -->
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<!-- mybatis/spring包 -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-httpclient</groupId>
+				<artifactId>commons-httpclient</artifactId>
+				<version>3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.ezmorph</groupId>
+				<artifactId>ezmorph</artifactId>
+				<version>1.0.6</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.json</groupId>
+				<artifactId>json</artifactId>
+				<version>20160212</version>
+			</dependency>
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>2.7.2</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.json-lib</groupId>
+				<artifactId>json-lib</artifactId>
+				<version>2.4</version>
+				<classifier>jdk15</classifier>
+			</dependency>
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>2.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz-jobs</artifactId>
+				<version>2.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysqlDriver.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>${log4j2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${log4j2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>${log4j2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-web</artifactId>
+				<version>${log4j2.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.lmax</groupId>
+				<artifactId>disruptor</artifactId>
+				<version>3.3.2</version>
+			</dependency>
+			<!-- springframe start -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- springframe end -->
+			<dependency>
+			  <groupId>net.bramp.ffmpeg</groupId>
+			  <artifactId>ffmpeg</artifactId>
+			  <version>0.5</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies><build>
+		<!-- 插件管理,子类可选 -->
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+				<groupId>org.eclipse.m2e</groupId>
+				<artifactId>lifecycle-mapping</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<lifecycleMappingMetadata>
+						<pluginExecutions>
+							<pluginExecution>
+								<pluginExecutionFilter>
+									<groupId>
+										org.apache.maven.plugins
+									</groupId>
+									<artifactId>
+										maven-compiler-plugin
+									</artifactId>
+									<versionRange>[3.1,)</versionRange>
+									<goals>
+										<goal>compile</goal>
+										<goal>testCompile</goal>
+									</goals>
+								</pluginExecutionFilter>
+								<action>
+									<ignore></ignore>
+								</action>
+							</pluginExecution>
+						</pluginExecutions>
+					</lifecycleMappingMetadata>
+				</configuration>
+				</plugin>
+				<!-- 把依赖的jar包拷到发行目录的lib目录下 -->
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.1</version>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>package</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<includeTypes>jar</includeTypes>
+						<type>jar</type>
+						<overWriteSnapshots>true</overWriteSnapshots>
+						<overWriteReleases>false</overWriteReleases>
+						<overWriteIfNewer>true</overWriteIfNewer>
+						<outputDirectory>${project.build.directory}/${project.artifactId}/lib</outputDirectory>
+					</configuration>
+				</plugin>
+				<!-- 以utf-8编码拷贝conf的配置文件,拷贝过程中是可以做变量替换的，也就是说你的配置文件可以是个模板，里面的${}所包含的内容是可以拷贝过程中替换的 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+					<executions>
+						<!-- 交给antrun处理资源文件的复制 <execution> <id>copy-conf</id> <phase>package</phase> 
+							<goals> <goal>copy-resources</goal> </goals> <configuration> <encoding>UTF-8</encoding> 
+							<outputDirectory>${project.build.directory}/${project.artifactId}</outputDirectory> 
+							<resources> <resource> <directory>src/main/resources</directory> <includes> 
+							<include>conf/*.*</include> </includes> <filtering>true</filtering> </resource> 
+							<resource> <directory>src/main/resources/shell</directory> <includes> <include>*.*</include> 
+							</includes> <filtering>true</filtering> </resource> </resources> </configuration> 
+							</execution> -->
+					</executions>
+				</plugin>
+
+				<!-- 拷贝编译后文件到发行目录 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.6</version>
+					<executions>
+						<execution>
+							<id>copy-classes</id>
+							<phase>prepare-package</phase>
+							<configuration>
+								<target>
+									<echo message="********************copy classes,conf,shell files *************************"/>
+									<!-- 拷贝编译输出目录所有文件到bin -->
+									<copydir src="${project.build.outputDirectory}" dest="${project.build.directory}/${project.artifactId}/bin">
+									</copydir>
+									<!-- bin的conf文件移动到bin同目录 -->
+									<move todir="${project.build.directory}/${project.artifactId}/conf">
+										<fileset dir="${project.build.directory}/${project.artifactId}/bin/conf">
+										</fileset>
+									</move>
+									<!-- bin/shell里面的文件移动到bin同目录 -->
+									<move todir="${project.build.directory}/${project.artifactId}">
+										<fileset dir="${project.build.directory}/${project.artifactId}/bin/shell">
+										</fileset>
+									</move>
+									<!-- 删除bin目录空文件夹 -->
+									<delete dir="${project.build.directory}/${project.artifactId}/bin/conf"/>
+									<delete dir="${project.build.directory}/${project.artifactId}/bin/shell"/>
+								</target>
+								<!-- <copy todir="${project.build.directory}/${project.artifactId}/bin"> 
+									<fileset dir="${project.build.outputDirectory}"> <include name="**" /> <exclude 
+									name="conf/*.*" /> <exclude name="shell/*.*" /> </fileset> </copy> <delete 
+									dir="${project.build.directory}/${project.artifactId}/bin/conf"/> <delete 
+									dir="${project.build.directory}/${project.artifactId}/bin/shell"/> <copydir 
+									src="${project.build.outputDirectory}" dest="${project.build.directory}/${project.artifactId}/target/classes/"> 
+									</copydir> <copydir src="${basedir}/src/main/resources/shell/" dest="${project.build.directory}/${project.artifactId}/" 
+									/> <copyfile src="${basedir.build.outputDirectory}" dest="${dist}/help/index.html"/> 
+									<move todir="${project.build.directory}/${project.artifactId}"> <fileset 
+									dir="${project.build.directory}/${project.artifactId}/target/classes/shell"> 
+									</fileset> </move> <copyfile src="${src}/index.html" dest="${dist}/help/index.html"/> 
+									<copydir src="${project.build.outputDirectory}" dest="${project.build.directory}/${project.artifactId}/bin"/> 
+									<copydir src="${project.build.outputDirectory}/shell" dest="${project.build.directory}/${project.artifactId}"/> 
+									<delete dir="${project.build.directory}/${project.artifactId}/bin/conf"/> 
+									<delete dir="${project.build.directory}/${project.artifactId}/bin/shell"/> -->
+							</configuration>
+							<goals>
+								<goal>run</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<!-- 子类pom继承的插件 -->
+		<plugins>
+			<!-- 代码编译插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<goals>
+					<goal>compile</goal>
+				</goals>
+				<configuration>
+					<!-- 编译器类型 javac -->
+					<compilerId>eclipse</compilerId>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<!-- 编译插件jdk版本 -->
+					<compilerVersion>${jdk.version}</compilerVersion>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.plexus</groupId>
+						<artifactId>plexus-compiler-eclipse</artifactId>
+						<version>2.6</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<!-- 源代码打包 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<attach>true</attach>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- 项目文档打包 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<configuration>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+			<!-- 字节码打jar包时把不需要的资源文件给排除在外 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<excludes>
+						<exclude>**/conf/*</exclude>
+						<exclude>**/shell/*</exclude>
+						<exclude>**/.svn/*</exclude>
+						<exclude>**/*.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<!--编译时,排除java及版本控制文件 -->
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>**/.svn/*</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/conf/*.*</include>
+					<include>**/shell/*.*</include>
+				</includes>
+				<filtering>true</filtering><!--开启变量过滤 -->
+			</resource>
+		</resources>
+	</build>
+</project>
